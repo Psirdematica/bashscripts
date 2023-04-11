@@ -1,0 +1,23 @@
+#! /bin/bash
+
+# echo "what is the filename?"
+# read -p "What is the filename?: " FILENAME
+FILENAME=$1
+sleep 1
+
+if [ -s $FILENAME ]
+then 
+    echo "sorry $FILENAME already exists.."
+else
+    echo "creating $FILENAME ..."
+    touch $FILENAME
+
+    sleep 2
+    echo "making ${FILENAME} executable... "
+    chmod 755 $FILENAME 
+
+    sleep 2
+    echo "declaring SHEBANG into $FILENAME..."
+    echo "#!/bin/bash" > $FILENAME
+
+fi
